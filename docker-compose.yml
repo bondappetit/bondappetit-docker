@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     command: --datadir=/root/.ethereum/ropsten --syncmode fast --ropsten --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
     volumes:
-      - ./data/ropsten:/root/.ethereum/ropsten
+      - ./data/ropsten:/root/.ethereum
     networks:
       bondappetit:
 
@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
     command: --datadir=/root/.ethereum/mainnet --syncmode fast --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
     volumes:
-      - ./data/mainnet:/root/.ethereum/mainnet
+      - ./data/mainnet:/root/.ethereum
     networks:
       bondappetit:
 
