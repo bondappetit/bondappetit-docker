@@ -46,7 +46,7 @@ services:
       - node_modules:/home/node/app/node_modules
       - ./config/blockchain-spy-ropsten.json:/home/node/app/config.json
       - ./config:/config
-    command: "/config/wait-for.sh ba-nginx:80 -- npm run start"
+    command: "/config/wait-for.sh ba-ropsten:8546 -- npm run start"
     networks:
       bondappetit:
 
