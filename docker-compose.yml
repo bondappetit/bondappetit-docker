@@ -4,6 +4,7 @@ services:
   ba-nginx:
     image: nginx:alpine
     container_name: ba-nginx
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -18,6 +19,7 @@ services:
   ba-ropsten:
     image: ethereum/client-go
     container_name: ba-ropsten
+    restart: unless-stopped
     command: --datadir=/root/.ethereum/ropsten --syncmode fast --ropsten --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
     volumes:
       - ./data/ropsten:/root/.ethereum/ropsten
@@ -27,11 +29,29 @@ services:
   ba-mainnet:
     image: ethereum/client-go
     container_name: ba-mainnet
+    restart: unless-stopped
     command: --datadir=/root/.ethereum/mainnet --syncmode fast --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
     volumes:
       - ./data/mainnet:/root/.ethereum/mainnet
     networks:
       bondappetit:
+
+  ba-spy-ropsten:
+    image: node:12-alpine
+    container_name: ba-spy-ropsten
+    working_dir: /home/node/app
+    restart: unless-stopped
+    volumes:
+      - ./src/blockchain-spy:/home/node/app
+      - node_modules:/home/node/app/node_modules
+      - ./config/blockchain-spy-ropsten.json:/home/node/app/config.json
+      - ./config:/config
+    command: "/config/wait-for.sh ba-nginx:80 -- npm run start"
+    networks:
+      bondappetit:
+
+volumes:
+  node_modules:
 
 networks:
   bondappetit:

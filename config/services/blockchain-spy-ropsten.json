@@ -1,0 +1,34 @@
+{
+	"logInterval": 5000,
+	"alertInterval": 5000,
+	"blockchain": {
+		"url": "ws://ba-ropsten:8546"
+	},
+	"logger": [
+		{
+			"type": "console",
+			"options": {}
+		}
+	],
+	"events": [
+		{
+			"contract": "CollateralMarket",
+			"events": [
+				{
+					"name": "Buy",
+					"template": "events/CollateralMarketBuy.mustache"
+				}
+			]
+		},
+		{
+			"contract": "Investment",
+			"events": [
+				{
+					"name": "Invested",
+					"template": "events/InvestmentInvested.mustache"
+				}
+			]
+		}
+	],
+	"alerts": []
+}
