@@ -20,7 +20,7 @@ services:
     image: ethereum/client-go
     container_name: ba-ropsten
     restart: unless-stopped
-    command: --datadir=/root/.ethereum --syncmode fast --ropsten --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
+    command: --datadir=/root/.ethereum --syncmode fast --ropsten --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.addr 0.0.0.0
     volumes:
       - ./data/ropsten:/root/.ethereum
     networks:
@@ -30,7 +30,7 @@ services:
     image: ethereum/client-go
     container_name: ba-mainnet
     restart: unless-stopped
-    command: --datadir=/root/.ethereum --syncmode fast --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws
+    command: --datadir=/root/.ethereum --syncmode fast --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.addr 0.0.0.0
     volumes:
       - ./data/mainnet:/root/.ethereum
     networks:
