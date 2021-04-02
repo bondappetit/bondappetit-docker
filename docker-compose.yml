@@ -52,7 +52,7 @@ services:
 
   ba-ganashe-ropsten:
     image: node:12-alpine
-    container_name: ba-spy-ropsten
+    container_name: ba-ganashe-ropsten
     working_dir: /home/node/app
     restart: unless-stopped
     volumes:
