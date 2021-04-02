@@ -59,7 +59,7 @@ services:
       - node_modules:/home/node/app/node_modules
       - ./config/services/blockchain-spy-ropsten.json:/home/node/app/config.json
       - ./config:/config
-    command: "/config/wait-for.sh ba-ropsten:8545 -- /config/services/ganache-ropsten.run.sh
+    command: "/config/wait-for.sh ba-ropsten:8545 -- /config/services/ganache-ropsten.run.sh"
     networks:
       bondappetit:
 
