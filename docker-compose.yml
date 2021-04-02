@@ -50,9 +50,9 @@ services:
     networks:
       bondappetit:
 
-  ba-ganashe-ropsten:
+  ba-ganache-ropsten:
     image: node:12-alpine
-    container_name: ba-ganashe-ropsten
+    container_name: ba-ganache-ropsten
     working_dir: /home/node/app
     restart: unless-stopped
     volumes:
@@ -62,9 +62,9 @@ services:
     networks:
       bondappetit:
 
-  ba-ganashe-mainnet:
+  ba-ganache-mainnet:
     image: node:12-alpine
-    container_name: ba-ganashe-mainnet
+    container_name: ba-ganache-mainnet
     working_dir: /home/node/app
     restart: unless-stopped
     volumes:
