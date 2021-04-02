@@ -58,7 +58,7 @@ services:
     volumes:
       - node_modules:/home/node/app/node_modules
       - ./config:/config
-    command: "/config/wait-for.sh ba-ropsten:8545 -- ganache-cli -f http://ba-ropsten:8545 -m 'tape total toast night perfect myself kiwi rich glow moment bitter actual spare bottom boss' -h 0.0.0.0 -u 0x8d22dbDD383Eff153025108f803AB3F2CFf6c795 -i 3 --chainId 3"
+    command: "/config/wait-for.sh ba-ropsten:8545 -- /config/services/ganache-ropsten.run.sh"
     networks:
       bondappetit:
 
@@ -70,7 +70,7 @@ services:
     volumes:
       - node_modules:/home/node/app/node_modules
       - ./config:/config
-    command: "/config/wait-for.sh ba-mainnet:8545 -- ganache-cli -f http://ba-mainnet:8545 -m 'tape total toast night perfect myself kiwi rich glow moment bitter actual spare bottom boss' -h 0.0.0.0 -u 0x8d22dbDD383Eff153025108f803AB3F2CFf6c795 -i 1 --chainId 1"
+    command: "/config/wait-for.sh ba-mainnet:8545 -- /config/services/ganache-mainnet.run.sh"
     networks:
       bondappetit:
 
