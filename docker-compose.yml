@@ -51,7 +51,7 @@ services:
       bondappetit:
 
   ba-ganache-ropsten:
-    image: node:12-alpine
+    image: trufflesuite/ganache-cli
     container_name: ba-ganache-ropsten
     working_dir: /home/node/app
     restart: unless-stopped
@@ -63,14 +63,14 @@ services:
       bondappetit:
 
   ba-ganache-mainnet:
-    image: node:12-alpine
+    image: trufflesuite/ganache-cli
     container_name: ba-ganache-mainnet
     working_dir: /home/node/app
     restart: unless-stopped
     volumes:
       - node_modules:/home/node/app/node_modules
       - ./config:/config
-    command: "/config/wait-for.sh ba-mainnet:8545 -- /config/services/ganache-mainnet.run.sh"
+    command: "/config/wait-for.sh ba-mainnet:8545 -- ganache-cli -f http://ba-mainnet:8545 -m 'tape total toast night perfect myself kiwi rich glow moment bitter actual spare bottom boss' -h 0.0.0.0 -u 0x8d22dbDD383Eff153025108f803AB3F2CFf6c795 -i 1 --chainId 1"
     networks:
       bondappetit:
 
