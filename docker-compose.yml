@@ -45,7 +45,7 @@ services:
       - ./src/blockchain-spy-ropsten:/home/node/app
       - node_modules:/home/node/app/node_modules
       - ./config:/config
-    command: "npm ci && npm run start"
+    command: bash -c "npm ci && npm run start"
     networks:
       bondappetit:
 
@@ -58,7 +58,7 @@ services:
       - ./src/blockchain-spy-mainnet:/home/node/app
       - node_modules:/home/node/app/node_modules
       - ./config:/config
-    command: "npm ci && npm run ropsten"
+    command: bash -c "npm ci && npm run ropsten"
     networks:
       bondappetit:
 
