@@ -42,11 +42,23 @@ services:
     working_dir: /home/node/app
     restart: unless-stopped
     volumes:
-      - ./src/blockchain-spy:/home/node/app
+      - ./src/blockchain-spy-ropsten:/home/node/app
       - node_modules:/home/node/app/node_modules
-      - ./config/services/blockchain-spy-ropsten.json:/home/node/app/config.json
       - ./config:/config
     command: "/config/wait-for.sh ba-ropsten:8546 -- npm run start"
+    networks:
+      bondappetit:
+
+  ba-spy-mainnet:
+    image: node:12-alpine
+    container_name: ba-spy-mainnet
+    working_dir: /home/node/app
+    restart: unless-stopped
+    volumes:
+      - ./src/blockchain-spy-mainnet:/home/node/app
+      - node_modules:/home/node/app/node_modules
+      - ./config:/config
+    command: "npm run start"
     networks:
       bondappetit:
 
