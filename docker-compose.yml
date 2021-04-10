@@ -113,6 +113,7 @@ services:
 
 volumes:
   node_modules:
+  postgres:
 
 networks:
   bondappetit:
