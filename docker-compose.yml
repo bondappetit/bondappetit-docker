@@ -103,6 +103,7 @@ services:
     environment:
       POSTGRES_USER: development
       POSTGRES_PASSWORD: dev
+      POSTGRES_DB: bondappetit
       PGDATA: /data/postgres
     volumes:
       - ./data/postgres:/data/postgres
