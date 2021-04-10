@@ -9,10 +9,11 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./config/nginx/conf.d:/etc/nginx/conf.d:cached
-      - ./config/nginx/ssl:/etc/nginx/ssl:cached
-      - ./config/nginx/includes:/etc/nginx/includes:cached
-      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:cached
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./config/nginx/ssl:/etc/nginx/ssl
+      - ./config/nginx/includes:/etc/nginx/includes
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./src/website:/var/www
     networks:
       bondappetit:
 
