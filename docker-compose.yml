@@ -84,6 +84,33 @@ services:
     networks:
       bondappetit:
 
+  ba-website-cache:
+    image: node:12-alpine
+    container_name: ba-website-cache
+    working_dir: /home/node/app
+    restart: unless-stopped
+    volumes:
+      - ./src/website-cache:/home/node/app
+      - ./config/website-cache.env:/home/node/app/.env
+      - ./config:/config
+    command: /bin/sh -c "npm ci && npm run build && npm run start"
+    networks:
+      bondappetit:
+
+  ba-postgres:
+    image: postgres:12.1
+    container_name: ba-postgres
+    environment:
+      POSTGRES_USER: development
+      POSTGRES_PASSWORD: dev
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+      - ./pgsql:/db.backup
+      - ./pgsql/init.sh:/docker-entrypoint-initdb.d/init.sh
+    networks:
+      bondappetit:
+
 volumes:
   node_modules:
 
