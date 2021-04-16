@@ -111,6 +111,8 @@ services:
       - MEMORY_CACHE=0
       - CACHE_MAXSIZE=1000
       - CACHE_TTL=6000
+    networks:
+      bondappetit:
 
 volumes:
   node_modules:
