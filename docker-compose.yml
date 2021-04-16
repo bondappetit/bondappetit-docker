@@ -103,9 +103,9 @@ services:
     networks:
       bondappetit:
 
-  ba-prerender:
+  ba-prerenderer:
     image: tvanro/prerender-alpine
-    container_name: ba-prerender
+    container_name: ba-prerenderer
     restart: unless-stopped
     environment:
       - MEMORY_CACHE=0
