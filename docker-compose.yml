@@ -13,7 +13,8 @@ services:
       - ./config/nginx/ssl:/etc/nginx/ssl
       - ./config/nginx/includes:/etc/nginx/includes
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./src/website:/var/www
+      - ./src/website:/var/www/website
+      - ./src/website-beta:/var/www/website-beta
     networks:
       bondappetit:
 
@@ -24,16 +25,6 @@ services:
     command: --datadir=/root/.ethereum --syncmode fast --ropsten --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.addr 0.0.0.0
     volumes:
       - ./data/ropsten:/root/.ethereum
-    networks:
-      bondappetit:
-
-  ba-mainnet:
-    image: ethereum/client-go
-    container_name: ba-mainnet
-    restart: unless-stopped
-    command: --datadir=/root/.ethereum --syncmode fast --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.addr 0.0.0.0
-    volumes:
-      - ./data/mainnet:/root/.ethereum
     networks:
       bondappetit:
 
@@ -111,6 +102,15 @@ services:
       - ./data/postgres:/data/postgres
     networks:
       bondappetit:
+
+  ba-prerender:
+    image: tvanro/prerender-alpine
+    container_name: ba-prerender
+    restart: unless-stopped
+    environment:
+      - MEMORY_CACHE=0
+      - CACHE_MAXSIZE=1000
+      - CACHE_TTL=6000
 
 volumes:
   node_modules:
