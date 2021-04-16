@@ -91,6 +91,19 @@ services:
     networks:
       bondappetit:
 
+  ba-coin-tracker:
+    image: node:12-alpine
+    container_name: ba-coin-tracker
+    working_dir: /home/node/app
+    restart: unless-stopped
+    volumes:
+      - ./src/coin-tracker:/home/node/app
+      - ./config/coin-tracker.env:/home/node/app/.env
+      - ./config:/config
+    command: /bin/sh -c "npm ci && npm run build && npm run start"
+    networks:
+      bondappetit:
+
   ba-postgres:
     image: postgres:12.1
     container_name: ba-postgres
