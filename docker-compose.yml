@@ -13,8 +13,7 @@ services:
       - ./config/nginx/ssl:/etc/nginx/ssl
       - ./config/nginx/includes:/etc/nginx/includes
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /home/bondappetit/bondappetit/website:/var/www/website
-      - /home/bondappetit/bondappetit/website-beta:/var/www/website-beta
+      - /home/bondappetit/bondappetit:/var/www
     depends_on:
       - ba-prerenderer
     networks:
