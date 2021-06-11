@@ -29,6 +29,16 @@ services:
     networks:
       bondappetit:
 
+  ba-mainnet:
+    image: ethereum/client-go
+    container_name: ba-mainnet
+    restart: unless-stopped
+    command: --datadir=/root/.ethereum --syncmode full --http --http.api "eth,net,web3" --http.corsdomain '*' --http.vhosts '*' --http.addr 0.0.0.0 --http.port 8545 --ws --ws.addr 0.0.0.0
+    volumes:
+      - ./data/mainnet:/root/.ethereum
+    networks:
+      bondappetit:
+
   ba-spy-ropsten:
     image: node:12-alpine
     container_name: ba-spy-ropsten
