@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   ba-nginx:
@@ -96,6 +96,8 @@ services:
       - ./src/website-cache:/home/node/app
       - ./config/website-cache.env:/home/node/app/.env
       - ./config:/config
+    environment:
+      NODE_OPTIONS: --max-old-space-size=8192
     command: /bin/sh -c "npm ci && npm run build && npm run start"
     networks:
       bondappetit:
