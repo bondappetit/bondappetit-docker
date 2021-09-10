@@ -13,6 +13,7 @@ services:
       - ./config/nginx/ssl:/etc/nginx/ssl
       - ./config/nginx/includes:/etc/nginx/includes
       - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /home/recovery/bondappetit/:/home/recovery/bondappetit/
       - ./src:/var/www
     depends_on:
       - ba-prerenderer
