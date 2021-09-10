@@ -51,6 +51,28 @@ services:
     networks:
       bondappetit:
 
+  ba-woodpacker:
+    image: node:12-alpine
+    container_name: woodpecker
+    working_dir: /home/node/app
+    volumes:
+      - ./src/woodpecker:/home/node/app
+      - ./config:/config
+    command: /bin/sh -c "npm ci && npm run rac --  --network ropsten"
+    networks:
+      bondappetit:
+
+  ba-woodpecker-ropsten:
+    image: node:12-alpine
+    container_name: woodpecker-ropsten
+    working_dir: /home/node/app
+    volumes:
+      - ./src/woodpecker-ropsten:/home/node/app
+      - ./config:/config
+    command: /bin/sh -c "npm ci && npm run rac -- --network ropsten"
+    networks:
+      bondappetit:
+
   ba-spy-mainnet:
     image: node:12-alpine
     container_name: ba-spy-mainnet
