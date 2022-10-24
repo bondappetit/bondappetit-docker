@@ -116,7 +116,7 @@ services:
     volumes:
       - node_modules:/root/.npm
       - ./src/website:/home/node/app
-    command: /bin/sh -c "apk add python3 build-base git && npm ci && run build"
+    command: /bin/sh -c "apk add python3 build-base git && npm i && npm run build"
     networks:
       bondappetit:
 
